@@ -6,11 +6,19 @@
     <title>Club House</title>
 </head>
 <body>
-    <%- include('./partials/nav')%>
+    <%- include('./partials/nav') %>
     <% messages.forEach((message) => { %>
         <div>
             <h4><%= message.title %></h4>
             <p><%= message.message_text %></p>
+            <% if(locals.currentUser) { %>
+                <% if(locals.currentUser.membership_status === 'club member' || locals.currentUser.membership_status === 'Admin') { %>
+                    <div>
+                        <p><%= message.username %></p>
+                        <p><%= message.date %></p>
+                    </div>
+                <% } %>
+            <% } %>
         </div>
     <% }) %>
 </body>

@@ -2,7 +2,11 @@
     <h3>Club House</h3>
     <div class="links">
         <a href="/">HOME</a>
-        <a href="/sign-up">SIGN-UP</a>
-        <a href="/login">LOGIN</a>
+        <% if(locals.currentUser) { %>
+            <a href="/log-out">LOGOUT</a>
+        <% } else { %>
+            <a href="/sign-up">SIGN-UP</a>
+            <a href="/login">LOGIN</a>
+        <% } %>
     </div>
 </nav>

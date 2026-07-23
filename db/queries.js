@@ -24,10 +24,17 @@ async function getMessagesByUserId(id) {
   return rows;
 }
 
+async function getMessagesWithUser() {
+  const { rows } = await pool.query(`SELECT m.message_id, m.title, m.message_text, m.date, u.username 
+                  FROM messages m JOIN users u ON m.user_id = u.user_id `);
+  return rows;
+}
+
 module.exports = {
   registerUser,
   getUserByUsername,
   getUserById,
   getAllMessages,
-  getMessagesByUserId
+  getMessagesByUserId,
+  getMessagesWithUser
 }

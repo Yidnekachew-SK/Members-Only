@@ -3,7 +3,7 @@ const { body, validationResult, matchedData } = require('express-validator');
 const bcrypt = require("bcryptjs");
 
 async function homepageGet(req, res) {
-    const messages = await db.getAllMessages();
+    const messages = await db.getMessagesWithUser();
     res.render('index', { messages })
 }
 

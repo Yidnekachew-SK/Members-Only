@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
+    <% if(errors.length > 0) { %>
+        <% errors.forEach((error) => { %>
+            <ul>
+                <li><%= error %></li>
+            </ul>
+        <% }) %>
+    <% } %>
     <form action="/login" method="post">
         <label for="username">Username: </label>
         <input type="text" name="username" id="username">
