@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS messages (
   message_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   title VARCHAR (50),
-  message_text NUMERIC(3),
-  date NUMERIC(3,1),
+  message_text TEXT,
+  date DATE,
   user_id INTEGER REFERENCES users(user_id)
 );
 `;

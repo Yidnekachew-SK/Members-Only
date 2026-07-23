@@ -2,6 +2,11 @@ const db = require('../db/queries');
 const { body, validationResult, matchedData } = require('express-validator');
 const bcrypt = require("bcryptjs");
 
+async function homepageGet(req, res) {
+    const messages = await db.getAllMessages();
+    res.render('index', { messages })
+}
+
 validateRegisterUser = [
     body('firstName').trim()
         .isAlpha().withMessage('First name must only be letters.'),
@@ -29,10 +34,11 @@ registerUser = [
         const { firstName, lastName, username, password } = matchedData(req);
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         await db.registerUser(firstName, lastName, username, hashedPassword);
-        res.redirect('index')
+        res.redirect('/');
     }
 ]
 
 module.exports = {
+    homepageGet,
     registerUser
 }

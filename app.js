@@ -6,6 +6,7 @@ const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 
 const signupRouter = require("./routes/signupRoutes");
+const db = require("./db/queries");
 
 const app = express();
 app.set("views", path.join(__dirname, "views"));
@@ -16,10 +17,6 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/", signupRouter);
-app.use("/index", (req, res) => {
-  res.render('index');
-});
-
 
 app.listen(3000, (error) => {
   if (error) {

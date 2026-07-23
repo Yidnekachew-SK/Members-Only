@@ -6,6 +6,12 @@
     <title>Club House</title>
 </head>
 <body>
-    <h2>Welcome to the club house</h2>
+    <%- include('./partials/nav')%>
+    <% messages.forEach((message) => { %>
+        <div>
+            <h4><%= message.title %></h4>
+            <p><%= message.message_text %></p>
+        </div>
+    <% }) %>
 </body>
 </html>
