@@ -1,0 +1,31 @@
+.formSection {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    min-width: 300px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 20px 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+input {
+    height: 20px;
+}
+
+.signupButton {
+    align-self: center;
+    padding: 5px 10px;
+    margin: 10px 8px;
+    font-size: 17px;
+}
+
+.signupButton:hover {
+    transform: scale(1.06);
+}

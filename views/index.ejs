@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index-styles.css">
     <title>Club House</title>
 </head>
 <body>
     <%- include('./partials/nav') %>
-    <% messages.forEach((message) => { %>
-        <div>
-            <h4><%= message.title %></h4>
-            <p><%= message.message_text %></p>
-            <% if(locals.currentUser) { %>
-                <% if(locals.currentUser.membership_status === 'club member' || locals.currentUser.membership_status === 'Admin') { %>
-                    <div>
-                        <p><%= message.username %></p>
-                        <p><%= message.date %></p>
-                    </div>
+    <div class="messageDisplaySection">
+        <% messages.forEach((message) => { %>
+            <div class="messageCard">
+                <h3 class="messageTitle"><%= message.title %></h3>
+                <p class="messageText"><%= message.message_text %></p>
+                <% if(locals.currentUser) { %>
+                    <% if(locals.currentUser.membership_status === 'club member' || locals.currentUser.membership_status === 'Admin') { %>
+                        <div class="memberOnlyDetail">
+                            <p class="messageAuthor">Author: <%= message.username %></p>
+                            <p class="messageDate"><%= message.date.toISOString().split("T")[0] %></p>
+                        </div>
+                    <% } %>
                 <% } %>
-            <% } %>
-        </div>
-    <% }) %>
+            </div>
+        <% }) %>
+    </div>
+    <%- include('./partials/footer') %>
 </body>
 </html>
