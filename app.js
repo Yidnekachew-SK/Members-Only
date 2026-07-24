@@ -4,6 +4,7 @@ const { Pool } = require("pg");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
+const methodOverride = require('method-override');
 
 const signupRouter = require("./routes/signupRoutes");
 const db = require("./db/queries");
@@ -18,6 +19,7 @@ app.use(express.static(assetsPath));
 app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 
 app.use("/", signupRouter);
 

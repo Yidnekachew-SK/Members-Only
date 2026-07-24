@@ -45,7 +45,7 @@ signupRouter.get('/log-out', (req, res, next) => {
     });
 });
 
-//signupRouter.delete('/:id/delete', messageController.delteMessage);
+signupRouter.delete('/:id/delete', messageController.deleteMessage);
 
 signupRouter.post('/join', registerController.joinClubPost)
 

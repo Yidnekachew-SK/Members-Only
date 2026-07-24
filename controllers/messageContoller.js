@@ -31,7 +31,7 @@ createMessagePost = [
     }
 ]
 
-async function delteMessage(req, res) {
+async function deleteMessage(req, res) {
     await db.deleteMessage(req.params.id);
     res.redirect('/');
 }
@@ -39,5 +39,5 @@ async function delteMessage(req, res) {
 module.exports = {
     createMessageGet,
     createMessagePost,
-    delteMessage
+    deleteMessage
 }

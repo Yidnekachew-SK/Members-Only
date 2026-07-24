@@ -25,15 +25,22 @@
         <div class="messageDisplaySection">
             <% messages.forEach((message) => { %>
                 <div class="messageCard">
-                    <h3 class="messageTitle"><%= message.title %></h3>
-                    <p class="messageText"><%= message.message_text %></p>
-                    <% if(currentUser) { %>
-                        <% if(currentUser.membership_status === 'club member' || currentUser.membership_status === 'Admin') { %>
-                            <div class="memberOnlyDetail">
-                                <p class="messageAuthor">Author: <%= message.username %></p>
-                                <p class="messageDate"><%= message.date.toISOString().split("T")[0] %></p>
-                            </div>
+                    <div class="messageInfo">
+                        <h3 class="messageTitle"><%= message.title %></h3>
+                        <p class="messageText"><%= message.message_text %></p>
+                        <% if(currentUser) { %>
+                            <% if(currentUser.membership_status === 'club member' || currentUser.membership_status === 'Admin') { %>
+                                <div class="memberOnlyDetail">
+                                    <p class="messageAuthor">Author: <%= message.username %></p>
+                                    <p class="messageDate"><%= message.date.toISOString().split("T")[0] %></p>
+                                </div>
+                            <% } %>
                         <% } %>
+                    </div>
+                    <% if(currentUser && currentUser.membership_status === "Admin") { %>
+                        <form action="/<%= message.message_id %>/delete?_method=DELETE" method="post">
+                            <button type="submit" class="deleteButton"><img src="/icons/delete.svg"></button>
+                        </form>
                     <% } %>
                 </div>
             <% }) %>

@@ -44,6 +44,9 @@ body {
     padding: 5px 10px;
     border: 1px solid;
     width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .messageTitle, .messageText {
@@ -69,6 +72,20 @@ body {
 
 .messageAuthor, .messageDate {
     margin: 3px 0;
+}
+
+.deleteButton {
+    padding: 0;
+    cursor: pointer;
+}
+
+.deleteButton:hover {
+    background-color: rgb(241, 94, 83);
+    transform: scale(1.05);
+}
+
+.deleteButton img {
+    width: 25px;
 }
 
 .hidden {
