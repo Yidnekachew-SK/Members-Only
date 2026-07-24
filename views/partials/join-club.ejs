@@ -1,0 +1,12 @@
+<div class="joinFormSection <%= showJoinForm ? '' : 'hidden' %>">
+    <%- include('error') %>
+    <form action="/join" method="post" class="joinForm">
+        <label for="code">Membership Code: </label>
+        <input type="password" name="membersCode" id="code">
+
+        <div class="buttons">
+            <a href="/"><button type="button" class="cancelButton">Cancel</button></a>
+            <button type="submit">Join</button>
+        </div>
+    </form>
+</div>

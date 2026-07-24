@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 
 async function homepageGet(req, res) {
     const messages = await db.getMessagesWithUser();
-    res.render('index', { messages })
+    res.render('index', { messages, showJoinForm: false})
 }
 
 validateRegisterUser = [
@@ -34,11 +34,36 @@ registerUser = [
         const { firstName, lastName, username, password } = matchedData(req);
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         await db.registerUser(firstName, lastName, username, hashedPassword);
+        res.redirect('/create-message');
+    }
+]
+
+const code = process.env.MEMBERSHIP_CODE;
+validateJoinForm = [
+    body('membersCode').trim()
+        .isAlpha().withMessage('Membership code must only be letters.')
+        .equals(code).withMessage('Incorrect code.')
+]
+
+joinClubPost = [
+    validateJoinForm,
+    async (req, res) => {
+        const error = validationResult(req);
+        if (!error.isEmpty()) {
+            return res.status(400).render("index", {
+                messages: await db.getMessagesWithUser(),
+                errors: error.array(),
+                showJoinForm: true
+            });
+        }
+        const userId = req.user.user_id;
+        await db.updateMembershipStatus(userId);
         res.redirect('/');
     }
 ]
 
 module.exports = {
     homepageGet,
-    registerUser
+    registerUser,
+    joinClubPost
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/create-message-styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <div class="messageFormSection">
+        <%- include('./partials/error') %>
+        <form action="/create-message" method="post">
+            <p>Add your Message</p>
+            <label for="title">Title: </label>
+            <input type="text" name="messageTitle" id="title">
+
+            <label for="text">Message: </label>
+            <textarea name="messageText" id="text" cols="40" rows="8"></textarea>
+
+            <div class="buttons">
+                <a href="/"><button type="button">Cancel</button></a>
+                <button type="submit">Create Message</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

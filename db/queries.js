@@ -30,11 +30,26 @@ async function getMessagesWithUser() {
   return rows;
 }
 
+async function insertMessage(title, message, date, userId) {
+  await pool.query('INSERT INTO messages(title, message_text, date, user_id) VALUES ($1, $2, $3, $4)', [title, message, date, userId]);
+}
+
+async function deleteMessage(messageId) {
+  await pool.query('DELETE FROM messages WHERE message_id = ($1)', [messageId]);
+}
+
+async function updateMembershipStatus(userId) {
+  await pool.query('UPDATE users set membership_status = ($1) WHERE user_id = ($2)', ['club member', userId]);
+}
+
 module.exports = {
   registerUser,
   getUserByUsername,
   getUserById,
   getAllMessages,
   getMessagesByUserId,
-  getMessagesWithUser
+  getMessagesWithUser,
+  insertMessage,
+  deleteMessage,
+  updateMembershipStatus
 }

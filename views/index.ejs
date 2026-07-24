@@ -8,22 +8,51 @@
 </head>
 <body>
     <%- include('./partials/nav') %>
-    <div class="messageDisplaySection">
-        <% messages.forEach((message) => { %>
-            <div class="messageCard">
-                <h3 class="messageTitle"><%= message.title %></h3>
-                <p class="messageText"><%= message.message_text %></p>
-                <% if(locals.currentUser) { %>
-                    <% if(locals.currentUser.membership_status === 'club member' || locals.currentUser.membership_status === 'Admin') { %>
-                        <div class="memberOnlyDetail">
-                            <p class="messageAuthor">Author: <%= message.username %></p>
-                            <p class="messageDate"><%= message.date.toISOString().split("T")[0] %></p>
-                        </div>
-                    <% } %>
+    <div class="mainSection">
+        <% if(currentUser) { %>
+            <h2>Welcome to the club house!</h2>
+            <div class="homepageButtons">
+                <form action="/create-message" method="get">
+                    <button type="submit" class="addMessageButton">Add your Message</button>
+                </form>
+                <% if(currentUser.membership_status === 'new member') { %>
+                    <button class="joinButton">Join the Club</button>
                 <% } %>
             </div>
-        <% }) %>
+            <%- include('./partials/join-club') %>
+        <% } %>
+
+        <div class="messageDisplaySection">
+            <% messages.forEach((message) => { %>
+                <div class="messageCard">
+                    <h3 class="messageTitle"><%= message.title %></h3>
+                    <p class="messageText"><%= message.message_text %></p>
+                    <% if(currentUser) { %>
+                        <% if(currentUser.membership_status === 'club member' || currentUser.membership_status === 'Admin') { %>
+                            <div class="memberOnlyDetail">
+                                <p class="messageAuthor">Author: <%= message.username %></p>
+                                <p class="messageDate"><%= message.date.toISOString().split("T")[0] %></p>
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
     </div>
     <%- include('./partials/footer') %>
+
+    <script>
+        const showFormBtn = document.querySelector(".joinButton");
+        const formSection = document.querySelector(".joinFormSection");
+        const cancelBtn = document.querySelector("#cancelButton");
+
+        showFormBtn.addEventListener("click", () => {
+            formSection.classList.remove("hidden");
+        });
+
+        cancelBtn.addEventListener("click", () => {
+            formSection.classList.add("hidden");
+        });
+    </script>
 </body>
 </html>

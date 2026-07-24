@@ -1,0 +1,36 @@
+.messageFormSection {
+    min-width: 300px;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+form {
+    padding: 10px 20px;
+    border: 1px solid gray;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+form p {
+    text-align: center;
+    margin: 3px 0;
+    font-size: 18px
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 7px 0;
+}
+
+button {
+    padding: 5px 10px;
+    font-size: 17px;
+    cursor: pointer;
+}
