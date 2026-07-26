@@ -1,3 +1,7 @@
+body {
+    background-color: #333;
+}
+
 .loginFormSection {
     margin-top: 80px;
     display: flex;
@@ -13,10 +17,18 @@ form {
     display: flex;
     flex-direction: column;
     gap: 3px;
+    background-color: #474545;
+    box-shadow: 2px 2px 1px #181818;
+}
+
+label {
+    color: burlywood;
 }
 
 input {
     height: 20px;
+    border-radius: 5px;
+    background-color: #b5a693;
 }
 
 .loginButton {
@@ -24,6 +36,8 @@ input {
     padding: 5px 20px;
     margin: 10px 8px;
     font-size: 17px;
+    color: #795548;
+    background-color: #d4d1d1;
 }
 
 .loginButton:hover {

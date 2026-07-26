@@ -10,11 +10,11 @@
     <%- include('./partials/nav') %>
     <div class="loginFormSection">
         <% if(errors.length > 0) { %>
-            <% errors.forEach((error) => { %>
-                <ul>
+            <ul>
+                <% errors.forEach((error) => { %>
                     <li><%= error %></li>
-                </ul>
-            <% }) %>
+                <% }) %>
+            </ul>
         <% } %>
         <form action="/login" method="post">
             <label for="username">Username: </label>

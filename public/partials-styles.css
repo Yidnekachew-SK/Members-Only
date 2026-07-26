@@ -9,7 +9,7 @@ nav {
     width: 100%;
     z-index: 100;
     border-bottom: 1px solid;
-    background-color: #28827a;
+    background-color: #464040;
 }
 
 .navTitle {
@@ -50,9 +50,9 @@ li {
 footer {
 	padding: 5px;
 	margin-top: 20px;
-	background-color: #00695f;
+	background-color: #544d4d;
 	color: wheat;
-    width: 99%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

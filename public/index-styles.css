@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: #333;
 }
 
 .mainSection {
@@ -42,11 +43,13 @@ body {
 
 .messageCard {
     padding: 5px 10px;
-    border: 1px solid;
+    border: 1px solid #b9ad6f;
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: gold;
+    box-shadow: 2px 2px 2px #666934;
 }
 
 .messageTitle, .messageText {
